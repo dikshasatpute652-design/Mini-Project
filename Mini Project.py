@@ -1,28 +1,33 @@
-# Attendance Management System
+balance = 0
 
-attendance = {}
+while True:
+    print("\n--- Bank Management System ---")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Check Balance")
+    print("4. Exit")
 
-n = int(input("Enter number of students: "))
+    choice = int(input("Enter your choice: "))
 
-for i in range(n):
-    name = input("Enter student name: ")
-    status = input("Present(P) / Absent(A): ").upper()
-    attendance[name] = status
+    if choice == 1:
+        amount = float(input("Enter amount to deposit: "))
+        balance += amount
+        print("Amount Deposited Successfully!")
 
-print("\nAttendance Report")
-print("------------------")
+    elif choice == 2:
+        amount = float(input("Enter amount to withdraw: "))
+        if amount <= balance:
+            balance -= amount
+            print("Amount Withdrawn Successfully!")
+        else:
+            print("Insufficient Balance!")
 
-present = 0
+    elif choice == 3:
+        print("Current Balance =", balance)
 
-for name, status in attendance.items():
-    print(name, ":", status)
-    
-    if status == "P":
-        present += 1
+    elif choice == 4:
+        print("Thank You!")
+        break
 
-percentage = (present / n) * 100
-
-print("\nTotal Students =", n)
-print("Present Students =", present)
-print("Absent Students =", n - present)
-print("Attendance Percentage =", percentage, "%")
+    else:
+        print("Invalid Choice!")
